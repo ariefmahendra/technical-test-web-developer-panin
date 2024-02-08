@@ -1,5 +1,8 @@
 @extends('layouts.app')
 @section('content')
+    <div class="flex justify-center mb-5">
+        <h1 class="text-3xl font-semibold">LOGIN</h1>
+    </div>
     @if(session('loginError'))
         <div class=" bg-red-800 text-white p-2 mb-5 rounded max-w-sm mx-auto">
             <p>{{session('loginError')}}</p>

@@ -10,5 +10,10 @@
         <p class="font-normal text-gray-700">
         {{$todo->description}}
         </p>
+        <button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-2 py-1 mt-2 text-center">
+            <a href="/tasks/{{ $todo->id }}/update" class="font-normal">
+                Edit
+            </a>
+        </button>
     </div>
 @endsection

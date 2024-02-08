@@ -37,10 +37,10 @@ class TasksController extends Controller
 
         $totalPage = ceil($totalRows / $size);
         $currentPage = $request->query('page') ?: 1;
-        $nextPage = $currentPage + $currentPage;
-        $previousPage = $currentPage - $currentPage;
+        $nextPage = $currentPage + 1 ;
+        $previousPage = $currentPage - 1;
 
-        return view('tasks.list', compact('tasks', 'totalPage', 'currentPage', 'nextPage', 'previousPage'));
+        return view('tasks.list', compact('tasks', 'totalPage', 'currentPage', 'nextPage', 'previousPage', 'totalRows'));
     }
 
     public function getById(Request $request){
