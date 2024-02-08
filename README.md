@@ -24,7 +24,7 @@ To run this locally, you'll need to clone the repository and install the depende
 - run `npm install`
 - run `npm run dev`
 - run `php artisan serve`
-- open browser and go to `http://localhost:8000`
+- open browser and go to `http://localhost:8000/auth/login`
 
 ## Log in credentials 
 You can log in with the following credentials:
