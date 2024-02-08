@@ -29,5 +29,5 @@ To run this locally, you'll need to clone the repository and install the depende
 ## Log in credentials 
 You can log in with the following credentials:
 - Email `user@mail.com` 
-- Password `secretPasword`
+- Password `secretPassword`
 
