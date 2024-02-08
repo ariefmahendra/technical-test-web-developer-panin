@@ -30,19 +30,16 @@
                     </td>
                     @if($t->status == 0)
                     <td class="p-4 border-b border-blue-gray-50">
-                        <p class="mx-2 block font-sans text-sm font-medium text-blue-gray-900"> uncheck
+                        <p class="mx-2 block font-sans text-sm font-medium text-blue-gray-900"> On Progress
                         </p>
                     </td>
                     @else
                         <td class="p-4 border-b border-blue-gray-50">
-                            <p class="mx-2 block font-sans text-sm font-medium text-blue-gray-900"> checked
+                            <p class="mx-2 block font-sans text-sm font-medium text-blue-gray-900"> Completed
                             </p>
                         </td>
                     @endif
                     <td class="p-4 border-b border-blue-gray-50 flex justify-around">
-                        <a href="/tasks/{{ $t->id }}" class="mx-2  block font-sans text-sm font-medium text-blue-gray-900 hover:text-red-500 focus:text-red-500 focus:outline-none">
-                            View
-                        </a>
                         @if($t -> status == 0)
                             <form action="/tasks/{{ $t->id }}/check/{{ $t->status }}" method="POST">
                                 @csrf
@@ -60,6 +57,9 @@
                                 </button>
                             </form>
                         @endif
+                        <a href="/tasks/{{ $t->id }}" class="mx-2  block font-sans text-sm font-medium text-blue-gray-900 hover:text-red-500 focus:text-red-500 focus:outline-none">
+                            View
+                        </a>
                         <a href="/tasks/{{ $t->id }}/update" class="mx-2  block font-sans text-sm font-medium text-blue-gray-900 hover:text-red-500 focus:text-red-500 focus:outline-none">
                             Edit
                         </a>
@@ -76,18 +76,20 @@
                 </tbody>
             </table>
             <div class="flex justify-between p-5">
-                <div class="flex">
+                <div class="flex m-1">
                     <p>Page {{$currentPage}} of {{$totalPage}}</p>
                     <p class="ml-1">Total : {{$totalRows}} tasks </p>
                 </div>
                 <div>
-                        <button class="mx-2">
+                    @if($currentPage > 1)
+                        <button class="hover:bg-gray-100 rounded hover:border-gray-300 border-2 m-1">
                             <a href="/tasks?page={{$previousPage}}&size=5" class="mx-2">
                                 Previous
                             </a>
                         </button>
+                    @endif
                     @if($currentPage < $totalPage)
-                        <button class="mx-2">
+                        <button class="hover:bg-gray-100 rounded hover:border-gray-300 border-2 m-1">
                             <a href="/tasks?page={{$nextPage}}&size=5" class="mx-2">
                                 Next
                             </a>
