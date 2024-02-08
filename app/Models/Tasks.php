@@ -14,6 +14,7 @@ class Tasks extends Model
         'description',
         'status',
         'user_id',
+        'due_date',
     ];
 
 }

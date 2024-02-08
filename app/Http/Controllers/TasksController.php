@@ -18,6 +18,7 @@ class TasksController extends Controller
 
         if($page == 0 || $size == 0 ) {
             $tasks = DB::table('tasks')->where('user_id', $userId)
+                ->select('id', 'title', 'description', 'due_date', 'status')
                 ->limit(5)
                 ->offset(0)
                 ->get();
@@ -28,6 +29,7 @@ class TasksController extends Controller
             $offset = ($page-1) * $size;
             $limit = $size;
             $tasks = DB::table('tasks')->where('user_id', $userId)
+                ->select('id', 'title', 'description', 'due_date', 'status')
                 ->limit($limit)
                 ->offset($offset)
                 ->get();
@@ -61,6 +63,14 @@ class TasksController extends Controller
 
     public function store(Request $request){
         $userId = Auth::id();
+        $dueDateRequest = strtotime($request->dueDate);
+        $dueDate = date('Y-m-d', $dueDateRequest);
+        $now = now()->format('Y-m-d');
+
+        if ($dueDate < $now){
+            return redirect() -> back()->with('errorDate', 'Create failed, due date must be greater than current date');
+        }
+
         Tasks::create([
             'title' => $request -> title,
             'description' => $request -> description,
@@ -80,10 +90,12 @@ class TasksController extends Controller
         $taskId = $request -> route('id');
         $title = $request -> title;
         $description = $request -> description;
+        $dueDate = strtotime($request->dueDate);
 
         DB::table('tasks')->where('id', $taskId)->where('user_id', $userId)->update([
             'title' => $title,
-            'description' => $description
+            'description' => $description,
+            'due_date' => $dueDate,
         ]);
 
         return redirect('/tasks');

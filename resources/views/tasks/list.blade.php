@@ -13,6 +13,9 @@
                         Title
                     </th>
                     <th class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">
+                        Due Date
+                    </th>
+                    <th class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">
                            Status
                     </th>
                     <th class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase flex justify-center">
@@ -26,6 +29,11 @@
                     <td class="p-4 border-b border-blue-gray-50">
                         <p class="mx-2 block font-sans text-sm font-medium text-blue-gray-900">
                           {{ $t->title }}
+                        </p>
+                    </td>
+                    <td class="p-4 border-b border-blue-gray-50">
+                        <p class="mx-2 block font-sans text-sm font-medium text-blue-gray-900">
+                            {{ $t->due_date }}
                         </p>
                     </td>
                     @if($t->status == 0)
@@ -45,7 +53,7 @@
                                 @csrf
                                 @method('PUT')
                                 <button type="submit" class="mx-2 block font-sans text-sm font-medium text-blue-gray-900 hover:text-red-500 focus:text-red-500 focus:outline-none">
-                                    Checklist
+                                   <img src="img/mark.png" class="w-5 h-5">
                                 </button>
                             </form>
                         @else
@@ -53,21 +61,21 @@
                                 @csrf
                                 @method('PUT')
                                 <button type="submit" class="mx-2 block font-sans text-sm font-medium  text-blue-gray-900 hover:text-red-500 focus:text-red-500 focus:outline-none">
-                                    Unchecklist
+                                    <img src="img/uncheck.png" class="w-5 h-5">
                                 </button>
                             </form>
                         @endif
                         <a href="/tasks/{{ $t->id }}" class="mx-2  block font-sans text-sm font-medium text-blue-gray-900 hover:text-red-500 focus:text-red-500 focus:outline-none">
-                            View
+                            <img src="img/view.png" class="w-5 h-5">
                         </a>
                         <a href="/tasks/{{ $t->id }}/update" class="mx-2  block font-sans text-sm font-medium text-blue-gray-900 hover:text-red-500 focus:text-red-500 focus:outline-none">
-                            Edit
+                            <img src="img/edit.png" class="w-5 h-5">
                         </a>
                         <form action="/tasks/{{ $t->id }}/delete" method="POST">
                             @csrf
                             @method('delete')
                             <button type="submit" class="mx-2 block font-sans text-sm font-medium text-blue-gray-900 hover:text-red-500 focus:text-red-500 focus:outline-none">
-                                Delete
+                                <img src="img/delete.png" class="w-5 h-5">
                             </button>
                         </form>
                     </td>
