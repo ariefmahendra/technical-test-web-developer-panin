@@ -20,7 +20,7 @@ To run this locally, you'll need to clone the repository and install the depende
 - cd into your directory
 - run `composer install`
 - run `php artisan migrate`
-- run `php artisan db:seed`
+- run `php artisan db:seed user`
 - run `npm install`
 - run `npm run dev`
 - run `php artisan serve`
